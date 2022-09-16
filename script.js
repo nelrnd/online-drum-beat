@@ -107,3 +107,11 @@ function showCurrentBar() {
   const bar = document.querySelector(`tr:first-of-type td:nth-of-type(${currentBar})`);
   bar.classList.add('current');
 }
+
+const clearBtn = document.querySelector('button#clear');
+clearBtn.addEventListener('click', clearTable);
+
+function clearTable() {
+  const bars = document.querySelectorAll('td');
+  bars.forEach(bar => bar.classList.remove('full'));
+}
