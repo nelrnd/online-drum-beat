@@ -2,6 +2,7 @@
   --lt-grey: #f3f3f3;
   --md-grey: #767676;
   --dk-grey: #373737;
+  --light: #ffffff;
 }
 
 * {
@@ -14,6 +15,7 @@ body {
   font-family: sans-serif;
   min-height: 100vh;
   padding-top: 200px;
+  background-color: var(--light);
 
   display: flex;
   flex-direction: column;

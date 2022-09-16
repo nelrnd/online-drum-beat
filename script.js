@@ -76,7 +76,7 @@ function playBar() {
 
   for (let i = 0; i < colBars.length; i++) {
     const corrSound = document.querySelector(`tr:nth-of-type(${i + 1}) th`).id;
-    if (colBars[i].className === 'full') {
+    if (colBars[i].className.includes('full')) {
       sounds[corrSound].currentTime = 0;
       sounds[corrSound].play();
     }
