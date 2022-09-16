@@ -50,7 +50,7 @@ playBtn.addEventListener('click', () => {
   if (playBtn.firstElementChild.src.includes('play')) {
     playBtn.firstElementChild.src = './pause.svg'
 
-    playState = setInterval(playBar, 200);
+    playState = setInterval(playBar, 180);
   } else {
     playBtn.firstElementChild.src = './play.svg'
 

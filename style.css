@@ -1,8 +1,8 @@
 :root {
-  --lt-grey: #f3f3f3;
+  --main: #362bff;
+  --dark: #1D1D1D;
+  --grey: #242424;
   --md-grey: #767676;
-  --dk-grey: #373737;
-  --light: #ffffff;
 }
 
 * {
@@ -15,7 +15,7 @@ body {
   font-family: sans-serif;
   min-height: 100vh;
   padding-top: 200px;
-  background-color: var(--light);
+  background-color: var(--dark);
 
   display: flex;
   flex-direction: column;
@@ -34,6 +34,8 @@ tr {
 }
 
 th {
+  color: white;
+  background-color: var(--grey);
   width: 120px;
   height: 50px;
   border: solid 2px var(--md-grey);
@@ -55,11 +57,11 @@ td {
 }
 
 td:nth-child(even) {
-  background-color: var(--lt-grey);
+  background-color: var(--grey);
 }
 
 td.full {
-  background-color: var(--dk-grey);
+  background-color: var(--main);
 }
 
 tr:first-of-type td {
@@ -68,12 +70,12 @@ tr:first-of-type td {
 tr:first-of-type td::after {
   content: '';
   display: block;
-  height: 8px;
+  height: 5px;
   width: 50px;
   position: absolute;
   left: -2px;
   top: -10px;
-  background-color: var(--dk-grey);
+  background-color: var(--main);
   opacity: 0;
   transition: all 0.2s;
 }
@@ -93,14 +95,13 @@ button {
   height: 50px;
   border: solid 2px var(--md-grey);
   border-radius: 4px;
-  background-color: transparent;
+  background-color: var(--dark);
+  position: relative;
+  bottom: 0;
+  transition: all 0.3s;
 }
 button:hover {
-  background-color: var(--lt-grey);
+  background-color: var(--grey);
+  bottom: 5px;
   cursor: pointer;
-}
-
-button img {
-  height: 25px;
-  width: auto;
 }
