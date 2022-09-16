@@ -1,5 +1,5 @@
 :root {
-  --main: #362bff;
+  --main: #463dff;
   --dark: #1D1D1D;
   --grey: #242424;
   --md-grey: #767676;
@@ -62,6 +62,8 @@ td {
   height: 50px;
   margin-left: -2px;
   border: solid 2px var(--md-grey);
+  
+  cursor: pointer;
 }
 
 td:nth-child(even) {

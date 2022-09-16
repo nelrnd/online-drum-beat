@@ -48,11 +48,11 @@ let playState;
 
 playBtn.addEventListener('click', () => {
   if (playBtn.firstElementChild.src.includes('play')) {
-    playBtn.firstElementChild.src = './pause.svg'
+    playBtn.firstElementChild.src = './icons/pause.svg'
 
-    playState = setInterval(playBar, 180);
+    playState = setInterval(playBar, 150);
   } else {
-    playBtn.firstElementChild.src = './play.svg'
+    playBtn.firstElementChild.src = './icons/play.svg'
 
     clearInterval(playState);
   }
