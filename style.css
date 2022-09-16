@@ -1,3 +1,13 @@
-h1 {
-  color: blue;
+table {
+  border-collapse: collapse;
+}
+
+th, td {
+  width: 120px;
+  height: 75px;
+  border: solid 2px black;
+}
+
+.full {
+  background-color: black;
 }
