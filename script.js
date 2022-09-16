@@ -79,12 +79,21 @@ function playBar() {
     if (colBars[i].className.includes('full')) {
       sounds[corrSound].currentTime = 0;
       sounds[corrSound].play();
+
+      const box = document.querySelector(`tr:nth-of-type(${i + 1}) th`);
+      box.classList.add('active');
+      box.addEventListener('transitionend', removeTransition);
     }
   }
 
   showCurrentBar();
 
   currentBar++;
+}
+
+function removeTransition(event) {
+  console.log(event.propertyName);
+  event.target.classList.remove('active');
 }
 
 function showCurrentBar() {
