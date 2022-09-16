@@ -1,13 +1,104 @@
+:root {
+  --lt-grey: #f3f3f3;
+  --md-grey: #767676;
+  --dk-grey: #373737;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  min-height: 100vh;
+  padding-top: 200px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
 table {
+  margin-top: 50px;
   border-collapse: collapse;
 }
 
-th, td {
-  width: 120px;
-  height: 75px;
-  border: solid 2px black;
+tr {
+  display: flex;
+  margin-bottom: 15px;
 }
 
-.full {
-  background-color: black;
+th {
+  width: 120px;
+  height: 50px;
+  border: solid 2px var(--md-grey);
+  border-radius: 4px;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+
+  cursor: pointer;
+}
+
+td {
+  width: 50px;
+  height: 50px;
+  margin-left: -2px;
+  border: solid 2px var(--md-grey);
+}
+
+td:nth-child(even) {
+  background-color: var(--lt-grey);
+}
+
+td.full {
+  background-color: var(--dk-grey);
+}
+
+tr:first-of-type td {
+  position: relative;
+}
+tr:first-of-type td::after {
+  content: '';
+  display: block;
+  height: 8px;
+  width: 50px;
+  position: absolute;
+  left: -2px;
+  top: -10px;
+  background-color: var(--dk-grey);
+  opacity: 0;
+  transition: all 0.2s;
+}
+
+tr:first-of-type td.current::after {
+  opacity: 1;
+  top: -15px;
+}
+
+.controls-container {
+  display: flex;
+  gap: 20px;
+}
+
+button {
+  width: 50px;
+  height: 50px;
+  border: solid 2px var(--md-grey);
+  border-radius: 4px;
+  background-color: transparent;
+}
+button:hover {
+  background-color: var(--lt-grey);
+  cursor: pointer;
+}
+
+button img {
+  height: 25px;
+  width: auto;
 }
