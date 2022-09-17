@@ -58,6 +58,20 @@ playBtn.addEventListener('click', () => {
   }
 });
 
+window.addEventListener('keydown', event => {
+  if (event.keyCode === 32) {
+    if (playBtn.firstElementChild.src.includes('play')) {
+      playBtn.firstElementChild.src = './icons/pause.svg'
+  
+      playState = setInterval(playBar, 150);
+    } else {
+      playBtn.firstElementChild.src = './icons/play.svg'
+  
+      clearInterval(playState);
+    }
+  }
+});
+
 const rewindBtn = document.querySelector('button#rewind');
 rewindBtn.addEventListener('click', () => {
   const bar = document.querySelector(`tr:first-of-type td:nth-of-type(${currentBar - 1})`);
@@ -92,7 +106,6 @@ function playBar() {
 }
 
 function removeTransition(event) {
-  console.log(event.propertyName);
   event.target.classList.remove('active');
 }
 
