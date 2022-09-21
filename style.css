@@ -2,6 +2,7 @@
   --main: #463dff;
   --dark: #1D1D1D;
   --grey: #242424;
+  --lt-grey: #A8A8A8;
   --md-grey: #767676;
 }
 
@@ -114,4 +115,25 @@ button:hover {
   background-color: var(--grey);
   bottom: 5px;
   cursor: pointer;
+}
+
+.bpm-container {
+  font-size: 20px;
+  color: var(--lt-grey);
+  background-color: var(--grey);
+  border: solid 2px var(--md-grey);
+  padding: 10px 16px;
+  border-radius: 4px;
+  user-select: none;
+  cursor: ns-resize;
+}
+.bpm-container::after {
+  content: url('./icons/up-down.svg');
+  vertical-align: middle;
+  display: inline-block;
+  margin-left: 16px;
+}
+#bpm-value {
+  font-weight: bold;
+  color: white;
 }

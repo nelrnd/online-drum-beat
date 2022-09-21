@@ -47,30 +47,29 @@ const playBtn = document.querySelector('button#play');
 let playState;
 
 playBtn.addEventListener('click', () => {
-  if (playBtn.firstElementChild.src.includes('play')) {
-    playBtn.firstElementChild.src = './icons/pause.svg'
-
-    playState = setInterval(playBar, 150);
-  } else {
-    playBtn.firstElementChild.src = './icons/play.svg'
-
-    clearInterval(playState);
-  }
+  play();
 });
 
 window.addEventListener('keydown', event => {
-  if (event.keyCode === 32) {
-    if (playBtn.firstElementChild.src.includes('play')) {
-      playBtn.firstElementChild.src = './icons/pause.svg'
-  
-      playState = setInterval(playBar, 150);
-    } else {
-      playBtn.firstElementChild.src = './icons/play.svg'
-  
-      clearInterval(playState);
-    }
+  if (event.keyCode === 32 && document.activeElement != playBtn) {
+    play();
   }
 });
+
+function play() {
+  if (playBtn.firstElementChild.src.includes('play')) {
+    playBtn.firstElementChild.src = './icons/pause.svg';
+    playBar();
+    playState = setInterval(playBar, convertBpm(bpmValue));
+  } else {
+    playBtn.firstElementChild.src = './icons/play.svg';
+    clearInterval(playState);
+  }
+}
+
+function convertBpm(bpm) {
+  return (60000 / bpm) / 4;
+}
 
 const rewindBtn = document.querySelector('button#rewind');
 rewindBtn.addEventListener('click', () => {
@@ -127,4 +126,42 @@ clearBtn.addEventListener('click', clearTable);
 function clearTable() {
   const bars = document.querySelectorAll('td');
   bars.forEach(bar => bar.classList.remove('full'));
+}
+
+const bpmBtn = document.querySelector('.bpm-container');
+let bpmValue = Number(document.querySelector('#bpm-value').textContent);
+
+const yPosition = {start: null, new: null}
+
+bpmBtn.addEventListener('mousedown', event => {
+  if (event.button === 0) {
+    yPosition.start = event.clientY;
+    window.addEventListener('mousemove', changeBpmValue);
+  }
+});
+
+function changeBpmValue(event) {
+  if (event.buttons === 0) {
+    window.removeEventListener('mousemove', changeBpmValue);
+  } else {
+    yPosition.new = yPosition.start - event.clientY;
+
+    if (yPosition.new > 0) {
+      bpmValue++;
+    } else if (yPosition.new < 0) {
+      bpmValue--;
+    }
+
+    document.querySelector('#bpm-value').textContent = bpmValue;
+
+    yPosition.start = event.clientY;
+    yPosition.new = null;
+
+    // If currently playing while changing bpm
+    // Change bpm while playing
+    if (playBtn.firstElementChild.src.includes('pause')) {
+      clearInterval(playState);
+      playState = setInterval(playBar, convertBpm(bpmValue));
+    }
+  }
 }
